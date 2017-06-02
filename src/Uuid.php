@@ -637,18 +637,19 @@ class Uuid implements UuidInterface
     }
 
     /**
-     * Generate a version 1 UUID from a host ID, sequence number, and the current time.
+     * Generate a version 1 UUID from a host ID, sequence number, and the current time or set time.
      *
      * @param int|string $node A 48-bit number representing the hardware address
      *     This number may be represented as an integer or a hexadecimal string.
      * @param int $clockSeq A 14-bit number used to help avoid duplicates that
      *     could arise when the clock is set backwards in time or if the node ID
      *     changes.
+     * @param int $timestamp A Unix timestamp in seconds to be used for generating the ID
      * @return UuidInterface
      */
-    public static function uuid1($node = null, $clockSeq = null)
+    public static function uuid1($node = null, $clockSeq = null, $timestamp = null)
     {
-        return self::getFactory()->uuid1($node, $clockSeq);
+        return self::getFactory()->uuid1($node, $clockSeq, $timestamp);
     }
 
     /**

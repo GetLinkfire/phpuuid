@@ -28,9 +28,10 @@ interface UuidFactoryInterface
      * @param int $clockSeq A 14-bit number used to help avoid duplicates that
      *     could arise when the clock is set backwards in time or if the node ID
      *     changes.
+     * @param int $timestamp a Unix timestamp in seconds
      * @return UuidInterface
      */
-    public function uuid1($node = null, $clockSeq = null);
+    public function uuid1($node = null, $clockSeq = null, $timestamp = null);
 
     /**
      * Generate a version 3 UUID based on the MD5 hash of a namespace identifier

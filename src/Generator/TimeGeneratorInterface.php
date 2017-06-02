@@ -31,5 +31,5 @@ interface TimeGeneratorInterface
      *     changes.
      * @return string A binary string
      */
-    public function generate($node = null, $clockSeq = null);
+    public function generate($node = null, $clockSeq = null, $timestamp = null);
 }

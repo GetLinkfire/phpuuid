@@ -199,9 +199,9 @@ class UuidFactory implements UuidFactoryInterface
         return $this->fromString($hex);
     }
 
-    public function uuid1($node = null, $clockSeq = null)
+    public function uuid1($node = null, $clockSeq = null, $timestamp = null)
     {
-        $bytes = $this->timeGenerator->generate($node, $clockSeq);
+        $bytes = $this->timeGenerator->generate($node, $clockSeq, $timestamp);
         $hex = bin2hex($bytes);
 
         return $this->uuidFromHashedName($hex, 1);

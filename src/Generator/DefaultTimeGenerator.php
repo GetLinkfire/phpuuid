@@ -73,7 +73,7 @@ class DefaultTimeGenerator implements TimeGeneratorInterface
      *     changes.
      * @return string A binary string
      */
-    public function generate($node = null, $clockSeq = null, $timestamp = null)
+    public function generate($node = null, $clockSeq = null, $date = null)
     {
         $node = $this->getValidNode($node);
 
@@ -84,10 +84,10 @@ class DefaultTimeGenerator implements TimeGeneratorInterface
 
         // Create a 60-bit time value as a count of 100-nanosecond intervals
         // since 00:00:00.00, 15 October 1582 
-       if($timestamp === null){
+       if($date === null){
             $timeOfDay = $this->timeProvider->currentTime();
         }else{
-            $timeOfDay = array('sec'=> $timestamp , 'usec' => 0, 'minuteswest' => null, 'dsttime' => null);
+            $timeOfDay = array('sec'=> $date->getTimeStamp() , 'usec' => (int)$date->format('u'));
         }
         
         $uuidTime = $this->timeConverter->calculateTime($timeOfDay['sec'], $timeOfDay['usec']);
